@@ -1,8 +1,9 @@
 package com.twu.biblioteca;
 
 public class Welcome {
+    private final String WELCOME_MESSAGE = "Welcome to Biblioteca";
     public Welcome()
     {
-        System.out.print("Welcome to Biblioteca");
+        System.out.println(WELCOME_MESSAGE);
     }
 }

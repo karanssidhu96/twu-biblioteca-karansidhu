@@ -19,7 +19,7 @@ public class WelcomeTest {
     @Test
     public void welcomeMessageTest() {
         Welcome welcome = new Welcome();
-        String expectedResult = "Welcome to Biblioteca";
+        String expectedResult = "Welcome to Biblioteca\r\n";
         assertEquals(expectedResult, outContent.toString());
     }
 }
