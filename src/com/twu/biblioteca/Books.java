@@ -1,12 +1,14 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
+
 public class Books {
-    private Book[] allBooks = new Book[3];
+    private ArrayList<Book> allBooks = new ArrayList<Book>();
     public Books()
     {
-        allBooks[0] = new Book("Frankenstein", "Mary Shelley", 1818);
-        allBooks[1] = new Book("Pride and Prejudice", "Jane Austen", 1813);
-        allBooks[2] = new Book("Great Expectations", "Charles Dickens", 1861);
+        allBooks.add(new Book("Frankenstein", "Mary Shelley", 1818));
+        allBooks.add(new Book("Pride and Prejudice", "Jane Austen", 1813));
+        allBooks.add(new Book("Great Expectations", "Charles Dickens", 1861));
     }
 
     public void printListAllBooks()
