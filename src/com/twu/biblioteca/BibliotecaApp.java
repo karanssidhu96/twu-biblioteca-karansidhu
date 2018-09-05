@@ -5,6 +5,6 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         Welcome welcome = new Welcome();
         Books books = new Books();
-        books.printListAllBooks();
+        MainMenu menu = new MainMenu(books);
     }
 }

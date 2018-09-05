@@ -33,7 +33,6 @@ public class MainMenuTest {
 
         MainMenu menu = new MainMenu(books);
         assertEquals(expectedResult, outContent.toString());
-
         verify(books, times(1)).printListAllBooks();
     }
 }
