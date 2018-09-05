@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import com.sun.corba.se.pept.encoding.InputObject;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,7 +23,7 @@ public class MainMenuTest {
     }
 
     @Test
-    public void mainMenuTest() {
+    public void mainMenuListBooksTest() {
         Books books = mock(Books.class);
         String input = "List Books";
         InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -34,5 +33,20 @@ public class MainMenuTest {
         MainMenu menu = new MainMenu(books);
         assertEquals(expectedResult, outContent.toString());
         verify(books, times(1)).printListAllBooks();
+    }
+
+    @Test
+    public void mainMenuInvalidOptionTest()
+    {
+        Books books = mock(Books.class);
+        String input = "Not an Option";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        String expectedResult = "Choose one of the following options\r\nList Books\r\nYour selection: ";
+
+        MainMenu menu = new MainMenu(books);
+        assertEquals(expectedResult, outContent.toString());
+        expectedResult = "\r\nSelect a valid option!: ";
+        assertEquals(expectedResult, outContent.toString());
     }
 }
