@@ -23,6 +23,14 @@ public class MainMenu {
     {
         Scanner s = new Scanner(System.in);
         String selectedMenuItem = s.nextLine();
+        if (!selectedMenuItem.equals("List Books"))
+        {
+            while (!selectedMenuItem.equals("List Books"))
+            {
+                System.out.print("\r\nSelect a valid option!: ");
+                selectedMenuItem = s.nextLine();
+            }
+        }
         return selectedMenuItem;
     }
 

@@ -38,6 +38,14 @@ public class MainMenuTest {
     @Test
     public void mainMenuInvalidOptionTest()
     {
+        Books books = mock(Books.class);
+        String input = "Not an Option\r\nList Books";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        String expectedResult = "Choose one of the following options\r\nList Books\r\nYour selection: " +
+                "\r\nSelect a valid option!: ";
 
+        MainMenu menu = new MainMenu(books);
+        assertEquals(expectedResult, outContent.toString());
     }
 }
