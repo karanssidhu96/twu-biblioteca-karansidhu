@@ -48,4 +48,18 @@ public class MainMenuTest {
         MainMenu menu = new MainMenu(books);
         assertEquals(expectedResult, outContent.toString());
     }
+
+    @Test
+    public void mainMenuQuitTest()
+    {
+        Books books = mock(Books.class);
+        String input = "List Books\r\nList Books\r\nQuit";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        String expectedResult = "Choose one of the following options\r\nList Books\r\nYour selection: " +
+                "\r\nChoose one of the following options\r\nList Books\r\nYour selection: ";
+
+        MainMenu menu = new MainMenu(books);
+        assertEquals(expectedResult, outContent.toString());
+    }
 }
