@@ -12,10 +12,12 @@ public class MainMenu {
 
     private void menu()
     {
+        String selectedMenuItem;
         System.out.println("Choose one of the following options");
         System.out.println("List Books");
+        System.out.println("Quit");
         System.out.print("Your selection: ");
-        String selectedMenuItem = userInput();
+        selectedMenuItem = userInput();
         innerMenu(selectedMenuItem);
     }
 
@@ -36,7 +38,7 @@ public class MainMenu {
 
     private boolean isInputValid(String selectedMenuItem)
     {
-        boolean result = (selectedMenuItem.equals("List Books") ? true : false);
+        boolean result = ((selectedMenuItem.equals("List Books")||(selectedMenuItem.equals("Quit")))? true : false);
         return result;
     }
 
@@ -47,6 +49,8 @@ public class MainMenu {
             case "List Books":
                 books.printListAllBooks();
                 break;
+            case "Quit":
+                System.exit(0);
             default:
                 books.printListAllBooks();
                 break;

@@ -28,7 +28,7 @@ public class MainMenuTest {
         String input = "List Books";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        String expectedResult = "Choose one of the following options\r\nList Books\r\nYour selection: ";
+        String expectedResult = "Choose one of the following options\r\nList Books\r\nQuit\r\nYour selection: ";
 
         MainMenu menu = new MainMenu(books);
         assertEquals(expectedResult, outContent.toString());
@@ -42,7 +42,7 @@ public class MainMenuTest {
         String input = "Not an Option\r\nList Books";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        String expectedResult = "Choose one of the following options\r\nList Books\r\nYour selection: " +
+        String expectedResult = "Choose one of the following options\r\nList Books\r\nQuit\r\nYour selection: " +
                 "\r\nSelect a valid option!: ";
 
         MainMenu menu = new MainMenu(books);
@@ -53,11 +53,10 @@ public class MainMenuTest {
     public void mainMenuQuitTest()
     {
         Books books = mock(Books.class);
-        String input = "List Books\r\nList Books\r\nQuit";
+        String input = "List Books\r\nQuit";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        String expectedResult = "Choose one of the following options\r\nList Books\r\nYour selection: " +
-                "\r\nChoose one of the following options\r\nList Books\r\nYour selection: ";
+        String expectedResult = "Choose one of the following options\r\nList Books\r\nQuit\r\nYour selection: ";
 
         MainMenu menu = new MainMenu(books);
         assertEquals(expectedResult, outContent.toString());
