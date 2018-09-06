@@ -21,17 +21,23 @@ public class MainMenu {
 
     private String userInput()
     {
+        boolean inputValid;
         Scanner s = new Scanner(System.in);
         String selectedMenuItem = s.nextLine();
-        if (!selectedMenuItem.equals("List Books"))
+        inputValid = isInputValid(selectedMenuItem);
+        while (!inputValid)
         {
-            while (!selectedMenuItem.equals("List Books"))
-            {
-                System.out.print("\r\nSelect a valid option!: ");
-                selectedMenuItem = s.nextLine();
-            }
+            System.out.print("\r\nSelect a valid option!: ");
+            selectedMenuItem = s.nextLine();
+            inputValid = isInputValid(selectedMenuItem);
         }
         return selectedMenuItem;
+    }
+
+    private boolean isInputValid(String selectedMenuItem)
+    {
+        boolean result = (selectedMenuItem.equals("List Books") ? true : false);
+        return result;
     }
 
     private void innerMenu(String selectedMenuItem)
