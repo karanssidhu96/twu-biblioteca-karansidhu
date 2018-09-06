@@ -25,7 +25,7 @@ public class MainMenuTest {
     @Test
     public void mainMenuListBooksTest() {
         Books books = mock(Books.class);
-        String input = "List Books";
+        String input = "List Books\r\nQuit";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         String expectedResult = "Choose one of the following options\r\nList Books\r\nQuit\r\nYour selection: ";

@@ -12,19 +12,21 @@ public class MainMenu {
 
     private void menu()
     {
-        String selectedMenuItem;
-        System.out.println("Choose one of the following options");
-        System.out.println("List Books");
-        System.out.println("Quit");
-        System.out.print("Your selection: ");
-        selectedMenuItem = userInput();
-        innerMenu(selectedMenuItem);
+        String selectedMenuItem = "";
+        Scanner s = new Scanner(System.in);
+        do {
+            System.out.println("Choose one of the following options");
+            System.out.println("List Books");
+            System.out.println("Quit");
+            System.out.print("Your selection: ");
+            selectedMenuItem = userInput(s);
+            innerMenu(selectedMenuItem);
+        } while (!selectedMenuItem.equals("Quit"));
     }
 
-    private String userInput()
+    private String userInput(Scanner s)
     {
         boolean inputValid;
-        Scanner s = new Scanner(System.in);
         String selectedMenuItem = s.nextLine();
         inputValid = isInputValid(selectedMenuItem);
         while (!inputValid)
