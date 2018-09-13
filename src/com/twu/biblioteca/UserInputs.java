@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class UserInputs {
 
-    public String menuUserInput(Scanner s)
+    private Scanner s = new Scanner(System.in);
+    public String menuUserInput()
     {
         boolean inputValid;
         String selectedMenuItem = s.nextLine();

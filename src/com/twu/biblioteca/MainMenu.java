@@ -1,26 +1,29 @@
 package com.twu.biblioteca;
 
-import java.util.Scanner;
-
 public class MainMenu {
     private Books books;
     private UserInputs ui;
     public MainMenu(Books books, UserInputs ui)
     {
         this.books = books;
-        this.ui = new UserInputs();
-        menu();
+        this.ui = ui;
+        runMenu();
     }
 
-    private void menu()
+    private void runMenu()
     {
         String selectedMenuItem = "";
-        Scanner s = new Scanner(System.in);
         do {
-            displayMenu();
-            selectedMenuItem = ui.menuUserInput(s);
-            innerMenu(selectedMenuItem);
+            selectedMenuItem = menu();
         } while (!selectedMenuItem.equals("Quit"));
+    }
+
+    private String menu()
+    {
+        displayMenu();
+        String selectedMenuItem = ui.menuUserInput();
+        innerMenu(selectedMenuItem);
+        return selectedMenuItem;
     }
 
     private void displayMenu()
