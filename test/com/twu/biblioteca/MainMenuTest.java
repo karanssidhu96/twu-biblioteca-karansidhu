@@ -9,9 +9,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class MainMenuTest {
     private PrintStream sysOut;
@@ -34,6 +32,7 @@ public class MainMenuTest {
         MainMenu menu = new MainMenu(books, ui);
         assertEquals(expectedResult, outContent.toString());
         verify(books, times(1)).printListAllBooks();
+        verify(ui, times(2)).menuUserInput();
     }
 
     @Test
