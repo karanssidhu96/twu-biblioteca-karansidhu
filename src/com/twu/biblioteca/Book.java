@@ -4,6 +4,15 @@ public class Book {
     private String title;
     private String author;
     private int publicationYear;
+    private boolean checkedOutBook;
+
+    public Book(String title, String author, int publicationYear)
+    {
+        this.title = title;
+        this.author = author;
+        this.publicationYear = publicationYear;
+        this.checkedOutBook = false;
+    }
 
     public String getAuthor() {
         return author;
@@ -17,10 +26,10 @@ public class Book {
         return title;
     }
 
-    public Book(String title, String author, int publicationYear)
+    public Boolean getCheckedOutBook() { return checkedOutBook; }
+
+    public void checkout()
     {
-        this.title = title;
-        this.author = author;
-        this.publicationYear = publicationYear;
+        //this.checkedOutBook = true;
     }
 }
