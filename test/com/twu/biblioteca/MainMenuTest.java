@@ -3,9 +3,7 @@ package com.twu.biblioteca;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
@@ -24,10 +22,11 @@ public class MainMenuTest {
     public void mainMenuListBooksTest() {
         Books books = mock(Books.class);
         UserInputs ui = mock(UserInputs.class);
-        String input = "List Books\r\nQuit";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        String expectedResult = "Choose one of the following options\r\nList Books\r\nQuit\r\nYour selection: ";
+        String expectedResult = "Choose one of the following options\nList Books\nQuit\nYour selection: " +
+                "Choose one of the following options\nList Books\nQuit\nYour selection: ";
+        when(ui.menuUserInput())
+                .thenReturn("List Books")
+                .thenReturn("Quit");
 
         MainMenu menu = new MainMenu(books, ui);
         assertEquals(expectedResult, outContent.toString());
@@ -36,31 +35,16 @@ public class MainMenuTest {
     }
 
     @Test
-    public void mainMenuInvalidOptionTest()
-    {
-        Books books = mock(Books.class);
-        UserInputs ui = mock(UserInputs.class);
-        String input = "Not an Option\r\nList Books";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        String expectedResult = "Choose one of the following options\r\nList Books\r\nQuit\r\nYour selection: " +
-                "\r\nSelect a valid option!: ";
-
-        MainMenu menu = new MainMenu(books, ui);
-        assertEquals(expectedResult, outContent.toString());
-    }
-
-    @Test
     public void mainMenuQuitTest()
     {
         Books books = mock(Books.class);
         UserInputs ui = mock(UserInputs.class);
-        String input = "List Books\r\nQuit";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        String expectedResult = "Choose one of the following options\r\nList Books\r\nQuit\r\nYour selection: ";
+        String expectedResult = "Choose one of the following options\nList Books\nQuit\nYour selection: ";
+        when(ui.menuUserInput())
+                .thenReturn("Quit");
 
         MainMenu menu = new MainMenu(books, ui);
         assertEquals(expectedResult, outContent.toString());
+        verify(ui, times(1)).menuUserInput();
     }
 }

@@ -42,7 +42,7 @@ public class MainMenu {
                 books.printListAllBooks();
                 break;
             case "Quit":
-                System.exit(0);
+                break;
             default:
                 books.printListAllBooks();
                 break;
