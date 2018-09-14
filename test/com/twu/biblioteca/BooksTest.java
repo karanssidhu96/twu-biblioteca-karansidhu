@@ -19,13 +19,12 @@ public class BooksTest {
     }
 
     @Test
-    public void listBooksTest() {
+    public void listBooksInStockTest() {
         Books books = new Books();
-        books.printListAllBooks();
+        books.printListAllBooksInStock();
         String expectedResult = String.format("|%-30s|%-30s|%-30s|\n|%-30s|%-30s|%-30s|" +
-                        "\n|%-30s|%-30s|%-30s|\n|%-30s|%-30s|%-30s|\n", "Title", "Author", "Publication Year", "Frankenstein",
-                        "Mary Shelley", "1818", "Pride and Prejudice", "Jane Austen", "1813", "Great Expectations",
-                        "Charles Dickens", "1861");
+                        "\n|%-30s|%-30s|%-30s|\n", "Title", "Author", "Publication Year", "Frankenstein",
+                        "Mary Shelley", "1818", "Pride and Prejudice", "Jane Austen", "1813");
         assertEquals(expectedResult, outContent.toString());
     }
 }

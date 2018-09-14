@@ -39,12 +39,12 @@ public class MainMenu {
         switch (selectedMenuItem)
         {
             case "List Books":
-                books.printListAllBooks();
+                books.printListAllBooksInStock();
                 break;
             case "Quit":
                 break;
             default:
-                books.printListAllBooks();
+                books.printListAllBooksInStock();
                 break;
         }
     }

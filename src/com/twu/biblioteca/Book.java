@@ -30,6 +30,6 @@ public class Book {
 
     public void checkout()
     {
-        //this.checkedOutBook = true;
+        this.checkedOutBook = true;
     }
 }
