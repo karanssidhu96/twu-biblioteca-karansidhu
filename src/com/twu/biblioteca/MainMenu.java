@@ -12,7 +12,7 @@ public class MainMenu {
 
     private void runMenu()
     {
-        String selectedMenuItem = "";
+        String selectedMenuItem;
         do {
             selectedMenuItem = menu();
         } while (!selectedMenuItem.equals("Quit"));
@@ -30,8 +30,16 @@ public class MainMenu {
     {
         System.out.println("Choose one of the following options");
         System.out.println("List Books");
+        System.out.println("Checkout Book");
         System.out.println("Quit");
         System.out.print("Your selection: ");
+    }
+
+    private void chekoutBook()
+    {
+        System.out.println("\nWhich book would you like to checkout?: ");
+        String bookToCheckoutTitle = ui.bookNameUserInput();
+        books.findBook(bookToCheckoutTitle).checkout();
     }
 
     private void innerMenu(String selectedMenuItem)
@@ -40,6 +48,9 @@ public class MainMenu {
         {
             case "List Books":
                 books.printListAllBooksInStock();
+                break;
+            case "Checkout Book":
+                chekoutBook();
                 break;
             case "Quit":
                 break;

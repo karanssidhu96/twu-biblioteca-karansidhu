@@ -11,6 +11,6 @@ public class BookTest {
         Book book = new Book("Book", "Mr Book", 2018);
         book.checkout();
 
-        assertEquals(true, book.getCheckedOutBook());
+        assertEquals(true, book.getIsBookCheckedOut());
     }
 }

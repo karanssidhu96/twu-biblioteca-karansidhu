@@ -19,8 +19,17 @@ public class BooksTest {
     }
 
     @Test
+    public void checkoutTest()
+    {
+        Books books = new Books();
+        books.findBook("Great Expectations").checkout();
+        assertEquals(true, books.findBook("Great Expectations").getIsBookCheckedOut());
+    }
+
+    @Test
     public void listBooksInStockTest() {
         Books books = new Books();
+        books.findBook("Great Expectations").checkout();
         books.printListAllBooksInStock();
         String expectedResult = String.format("|%-30s|%-30s|%-30s|\n|%-30s|%-30s|%-30s|" +
                         "\n|%-30s|%-30s|%-30s|\n", "Title", "Author", "Publication Year", "Frankenstein",

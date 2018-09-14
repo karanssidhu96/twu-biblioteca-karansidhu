@@ -43,6 +43,28 @@ public class UserInputsTest {
     }
 
     @Test
+    public void userSelectsCheckoutBookTest()
+    {
+        String input = "Checkout Book";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        UserInputs ui = new UserInputs();
+        assertEquals(ui.menuUserInput(), "Checkout Book");
+    }
+
+    @Test
+    public void userBookNameInputTest()
+    {
+        String input = "Great Expectations";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        UserInputs ui = new UserInputs();
+        assertEquals(ui.bookNameUserInput(), "Great Expectations");
+    }
+
+    @Test
     public void userSelectsInvalidThenValidInputQuitTest()
     {
         String input = "Invalid input\nQuit";

@@ -19,9 +19,16 @@ public class UserInputs {
         return selectedMenuItem;
     }
 
+    public String bookNameUserInput()
+    {
+        String bookName = s.nextLine();
+        return bookName;
+    }
+
     private boolean isMenuInputValid(String selectedMenuItem)
     {
-        boolean result = ((selectedMenuItem.equals("List Books")||(selectedMenuItem.equals("Quit")))? true : false);
+        boolean result = ((selectedMenuItem.equals("List Books")||(selectedMenuItem.equals("Quit"))
+                ||(selectedMenuItem.equals("Checkout Book")))? true : false);
         return result;
     }
 }

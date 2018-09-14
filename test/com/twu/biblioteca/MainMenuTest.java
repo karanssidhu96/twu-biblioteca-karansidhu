@@ -22,8 +22,8 @@ public class MainMenuTest {
     public void mainMenuListBooksTest() {
         Books books = mock(Books.class);
         UserInputs ui = mock(UserInputs.class);
-        String expectedResult = "Choose one of the following options\nList Books\nQuit\nYour selection: " +
-                "Choose one of the following options\nList Books\nQuit\nYour selection: ";
+        String expectedResult = "Choose one of the following options\nList Books\nCheckout Book\nQuit\nYour selection: " +
+                "Choose one of the following options\nList Books\nCheckout Book\nQuit\nYour selection: ";
         when(ui.menuUserInput())
                 .thenReturn("List Books")
                 .thenReturn("Quit");
@@ -35,11 +35,30 @@ public class MainMenuTest {
     }
 
     @Test
+    public void mainMenuCheckoutBookTest()
+    {
+        Books books = new Books();
+        UserInputs ui = mock(UserInputs.class);
+        String expectedResult = "Choose one of the following options\nList Books\nCheckout Book\nQuit\nYour selection: " +
+                "\nWhich book would you like to checkout?: " +
+                "\nChoose one of the following options\nList Books\nCheckout Book\nQuit\nYour selection: ";
+        when(ui.menuUserInput())
+                .thenReturn("Checkout Book")
+                .thenReturn("Quit");
+        when(ui.bookNameUserInput())
+                .thenReturn("Pride and Prejudice");
+
+        MainMenu menu = new MainMenu(books, ui);
+        assertEquals(expectedResult, outContent.toString());
+        assertEquals(true, books.findBook("Pride and Prejudice").getIsBookCheckedOut());
+    }
+
+    @Test
     public void mainMenuQuitTest()
     {
         Books books = mock(Books.class);
         UserInputs ui = mock(UserInputs.class);
-        String expectedResult = "Choose one of the following options\nList Books\nQuit\nYour selection: ";
+        String expectedResult = "Choose one of the following options\nList Books\nCheckout Book\nQuit\nYour selection: ";
         when(ui.menuUserInput())
                 .thenReturn("Quit");
 
