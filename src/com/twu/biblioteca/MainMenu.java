@@ -35,7 +35,7 @@ public class MainMenu {
         System.out.print("Your selection: ");
     }
 
-    private void chekoutBook()
+    private void checkoutBook()
     {
         System.out.println("\nWhich book would you like to checkout?: ");
         String bookToCheckoutTitle = ui.bookNameUserInput();
@@ -50,7 +50,7 @@ public class MainMenu {
                 books.printListAllBooksInStock();
                 break;
             case "Checkout Book":
-                chekoutBook();
+                checkoutBook();
                 break;
             case "Quit":
                 break;

@@ -31,5 +31,6 @@ public class Book {
     public void checkout()
     {
         this.isBookCheckedOut = true;
+        System.out.println("Thank you! Enjoy the book");
     }
 }
