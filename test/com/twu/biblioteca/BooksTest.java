@@ -31,7 +31,7 @@ public class BooksTest {
         Books books = new Books();
         books.findBook("Great Expectations").checkout();
         books.printListAllBooksInStock();
-        String expectedResult = String.format("|%-30s|%-30s|%-30s|\n|%-30s|%-30s|%-30s|" +
+        String expectedResult = String.format("Thank you! Enjoy the book\n|%-30s|%-30s|%-30s|\n|%-30s|%-30s|%-30s|" +
                         "\n|%-30s|%-30s|%-30s|\n", "Title", "Author", "Publication Year", "Frankenstein",
                         "Mary Shelley", "1818", "Pride and Prejudice", "Jane Austen", "1813");
         assertEquals(expectedResult, outContent.toString());
