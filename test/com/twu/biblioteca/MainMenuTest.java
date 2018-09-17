@@ -61,8 +61,8 @@ public class MainMenuTest {
         UserInputs ui = mock(UserInputs.class);
         String expectedResult = "Thank you! Enjoy the book\nChoose one of the following options\nList Books" +
                 "\nCheckout Book\nReturn Book\nQuit\nYour selection: " +
-                "Which book would you like to return?: " +
-                "Choose one of the following options\nList Books\nCheckout Book\nReturn Book\nQuit\nYour selection: ";
+                "Which book would you like to return?: Thank you for returning the book" +
+                "\nChoose one of the following options\nList Books\nCheckout Book\nReturn Book\nQuit\nYour selection: ";
         when(ui.menuUserInput())
                 .thenReturn("Return Book")
                 .thenReturn("Quit");

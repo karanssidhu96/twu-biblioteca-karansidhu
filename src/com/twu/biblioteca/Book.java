@@ -44,5 +44,6 @@ public class Book {
     public void returnBook()
     {
         this.isBookCheckedOut = false;
+        System.out.println("Thank you for returning the book");
     }
 }
