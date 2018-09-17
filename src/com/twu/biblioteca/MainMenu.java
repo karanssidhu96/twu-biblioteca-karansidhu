@@ -3,10 +3,12 @@ package com.twu.biblioteca;
 public class MainMenu {
     private Books books;
     private UserInputs ui;
+    private Movies movies;
     public MainMenu(Books books, Movies movies, UserInputs ui)
     {
         this.books = books;
         this.ui = ui;
+        this.movies = movies;
         runMenu();
     }
 
@@ -30,6 +32,7 @@ public class MainMenu {
     {
         System.out.println("Choose one of the following options");
         System.out.println("List Books");
+        System.out.println("List Movies");
         System.out.println("Checkout Book");
         System.out.println("Return Book");
         System.out.println("Quit");
@@ -58,6 +61,9 @@ public class MainMenu {
         {
             case "List Books":
                 books.printListAllBooksInStock();
+                break;
+            case "List Movies":
+                movies.printListOfAvailableMovies();
                 break;
             case "Checkout Book":
                 checkoutBook();

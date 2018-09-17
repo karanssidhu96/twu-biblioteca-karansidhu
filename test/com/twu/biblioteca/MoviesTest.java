@@ -22,8 +22,8 @@ public class MoviesTest {
     public void listAvailableMoviesTest() {
         Movies movies = new Movies();
         movies.printListOfAvailableMovies();
-        String expectedResult = String.format("|%-30s|%-30s|%-30s|%-30|\n|%-30s|%-30s|%-30s|%-30|" +
-                        "\n|%-30s|%-30s|%-30s|%-30|\n|%-30s|%-30s|%-30s|%-30|", "Name", "Director", "Year", "Rating",
+        String expectedResult = String.format("|%-50s|%-30s|%-30s|%-30s|\n|%-50s|%-30s|%-30s|%-30s|" +
+                        "\n|%-50s|%-30s|%-30s|%-30s|\n|%-50s|%-30s|%-30s|%-30s|\n", "Name", "Director", "Year", "Rating",
                 "The Shawshank Redemption", "Frank Darabont", "1994", "9",
                 "Avengers: Infinity War", "Anthony Russo", "2018", "8",
                 "Three Billboards Outside Ebbing, Missouri", "Martin McDonagh", "2017", "8");

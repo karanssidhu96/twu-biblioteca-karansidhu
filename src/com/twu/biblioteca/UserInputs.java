@@ -44,7 +44,8 @@ public class UserInputs {
     private boolean isMenuInputValid(String selectedMenuItem)
     {
         boolean result = ((selectedMenuItem.equals("List Books")||(selectedMenuItem.equals("Quit"))
-                ||(selectedMenuItem.equals("Checkout Book"))||selectedMenuItem.equals("Return Book"))? true : false);
+                ||(selectedMenuItem.equals("Checkout Book"))||selectedMenuItem.equals("Return Book")
+                ||selectedMenuItem.equals("List Movies"))? true : false);
         return result;
     }
 
