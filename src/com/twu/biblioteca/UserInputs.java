@@ -41,6 +41,11 @@ public class UserInputs {
         return bookTitle;
     }
 
+    public String movieNameUserInput()
+    {
+        return "";
+    }
+
     private boolean isMenuInputValid(String selectedMenuItem)
     {
         boolean result = ((selectedMenuItem.equals("List Books")||(selectedMenuItem.equals("Quit"))

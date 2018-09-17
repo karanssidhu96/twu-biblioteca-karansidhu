@@ -69,6 +69,18 @@ public class UserInputsTest {
     }
 
     @Test
+    public void userMovieNameInputTest()
+    {
+        Books books = new Books();
+        String input = "The Shawshank Redemption";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        UserInputs ui = new UserInputs(books);
+        assertEquals(ui.movieNameUserInput(), "The Shawshank Redemption");
+    }
+
+    @Test
     public void userSelectsInvalidBookTitleThenValidBookTitleTest()
     {
         Books books = new Books();

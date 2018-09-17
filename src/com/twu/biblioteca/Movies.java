@@ -22,4 +22,9 @@ public class Movies {
                     Integer.toString(movie.getYear()), Integer.toString(movie.getRating())));
         }
     }
+
+    public Movie findMovie(String movieName)
+    {
+        return new Movie("", "", 2018, 8);
+    }
 }

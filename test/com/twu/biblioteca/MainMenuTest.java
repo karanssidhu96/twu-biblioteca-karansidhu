@@ -23,8 +23,8 @@ public class MainMenuTest {
         Books books = mock(Books.class);
         Movies movies = mock(Movies.class);
         UserInputs ui = mock(UserInputs.class);
-        String expectedResult = "Choose one of the following options\nList Books\nList Movies\nCheckout Book\nReturn Book\nQuit\nYour selection: " +
-                "Choose one of the following options\nList Books\nList Movies\nCheckout Book\nReturn Book\nQuit\nYour selection: ";
+        String expectedResult = "Choose one of the following options\nList Books\nList Movies\nCheckout Book\nCheckout Movie\nReturn Book\nQuit\nYour selection: " +
+                "Choose one of the following options\nList Books\nList Movies\nCheckout Book\nCheckout Movie\nReturn Book\nQuit\nYour selection: ";
         when(ui.menuUserInput())
                 .thenReturn("List Books")
                 .thenReturn("Quit");
@@ -40,8 +40,8 @@ public class MainMenuTest {
         Books books = mock(Books.class);
         Movies movies = mock(Movies.class);
         UserInputs ui = mock(UserInputs.class);
-        String expectedResult = "Choose one of the following options\nList Books\nList Movies\nCheckout Book\nReturn Book\nQuit\nYour selection: " +
-                "Choose one of the following options\nList Books\nList Movies\nCheckout Book\nReturn Book\nQuit\nYour selection: ";
+        String expectedResult = "Choose one of the following options\nList Books\nList Movies\nCheckout Book\nCheckout Movie\nReturn Book\nQuit\nYour selection: " +
+                "Choose one of the following options\nList Books\nList Movies\nCheckout Book\nCheckout Movie\nReturn Book\nQuit\nYour selection: ";
         when(ui.menuUserInput())
                 .thenReturn("List Movies")
                 .thenReturn("Quit");
@@ -58,9 +58,9 @@ public class MainMenuTest {
         Books books = new Books();
         Movies movies = mock(Movies.class);
         UserInputs ui = mock(UserInputs.class);
-        String expectedResult = "Choose one of the following options\nList Books\nList Movies\nCheckout Book\nReturn Book\nQuit\nYour selection: " +
+        String expectedResult = "Choose one of the following options\nList Books\nList Movies\nCheckout Book\nCheckout Movie\nReturn Book\nQuit\nYour selection: " +
                 "Which book would you like to checkout?: Thank you! Enjoy the book" +
-                "\nChoose one of the following options\nList Books\nList Movies\nCheckout Book\nReturn Book\nQuit\nYour selection: ";
+                "\nChoose one of the following options\nList Books\nList Movies\nCheckout Book\nCheckout Movie\nReturn Book\nQuit\nYour selection: ";
         when(ui.menuUserInput())
                 .thenReturn("Checkout Book")
                 .thenReturn("Quit");
@@ -73,6 +73,26 @@ public class MainMenuTest {
     }
 
     @Test
+    public void mainMenuCheckoutMovieTest()
+    {
+        Books books = new Books();
+        Movies movies = new Movies();
+        UserInputs ui = mock(UserInputs.class);
+        String expectedResult = "Choose one of the following options\nList Books\nList Movies\nCheckout Book\nCheckout Movie\nReturn Book\nQuit\nYour selection: " +
+                "Which movie would you like to checkout?: " +
+                "\nChoose one of the following options\nList Books\nList Movies\nCheckout Book\nCheckout Movie\nReturn Book\nQuit\nYour selection: ";
+        when(ui.menuUserInput())
+                .thenReturn("Checkout Movie")
+                .thenReturn("Quit");
+        when(ui.movieNameUserInput())
+                .thenReturn("The Shawshank Redemption");
+
+        MainMenu menu = new MainMenu(books, movies, ui);
+        assertEquals(expectedResult, outContent.toString());
+        assertEquals(true, movies.findMovie("The Shawshank Redemption").getIsMovieCheckedOut());
+    }
+
+    @Test
     public void mainMenuReturnBookTest()
     {
         Books books = new Books();
@@ -80,9 +100,9 @@ public class MainMenuTest {
         books.findBook("Pride and Prejudice").checkout();
         UserInputs ui = mock(UserInputs.class);
         String expectedResult = "Thank you! Enjoy the book\nChoose one of the following options\nList Books" +
-                "\nList Movies\nCheckout Book\nReturn Book\nQuit\nYour selection: " +
+                "\nList Movies\nCheckout Book\nCheckout Movie\nReturn Book\nQuit\nYour selection: " +
                 "Which book would you like to return?: Thank you for returning the book" +
-                "\nChoose one of the following options\nList Books\nList Movies\nCheckout Book\nReturn Book\nQuit" +
+                "\nChoose one of the following options\nList Books\nList Movies\nCheckout Book\nCheckout Movie\nReturn Book\nQuit" +
                 "\nYour selection: ";
         when(ui.menuUserInput())
                 .thenReturn("Return Book")
@@ -102,7 +122,7 @@ public class MainMenuTest {
         Books books = mock(Books.class);
         Movies movies = mock(Movies.class);
         UserInputs ui = mock(UserInputs.class);
-        String expectedResult = "Choose one of the following options\nList Books\nList Movies\nCheckout Book\nReturn Book" +
+        String expectedResult = "Choose one of the following options\nList Books\nList Movies\nCheckout Book\nCheckout Movie\nReturn Book" +
                 "\nQuit\nYour selection: ";
         when(ui.menuUserInput())
                 .thenReturn("Quit");
