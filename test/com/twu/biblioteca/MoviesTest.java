@@ -21,11 +21,11 @@ public class MoviesTest {
     @Test
     public void listAvailableMoviesTest() {
         Movies movies = new Movies();
+        movies.findMovie("Avengers: Infinity War").checkout();
         movies.printListOfAvailableMovies();
         String expectedResult = String.format("|%-50s|%-30s|%-30s|%-30s|\n|%-50s|%-30s|%-30s|%-30s|" +
-                        "\n|%-50s|%-30s|%-30s|%-30s|\n|%-50s|%-30s|%-30s|%-30s|\n", "Name", "Director", "Year", "Rating",
+                        "\n|%-50s|%-30s|%-30s|%-30s|\n", "Name", "Director", "Year", "Rating",
                 "The Shawshank Redemption", "Frank Darabont", "1994", "9",
-                "Avengers: Infinity War", "Anthony Russo", "2018", "8",
                 "Three Billboards Outside Ebbing, Missouri", "Martin McDonagh", "2017", "8");
         assertEquals(expectedResult, outContent.toString());
     }

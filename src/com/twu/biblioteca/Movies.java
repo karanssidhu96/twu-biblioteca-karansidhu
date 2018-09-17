@@ -18,13 +18,23 @@ public class Movies {
         System.out.println(String.format("|%-50s|%-30s|%-30s|%-30s|", "Name", "Director", "Year", "Rating"));
         for (Movie movie : allMovies)
         {
-            System.out.println(String.format("|%-50s|%-30s|%-30s|%-30s|", movie.getName(), movie.getDirector(),
-                    Integer.toString(movie.getYear()), Integer.toString(movie.getRating())));
+            if (!movie.getIsMovieCheckedOut())
+            {
+                System.out.println(String.format("|%-50s|%-30s|%-30s|%-30s|", movie.getName(), movie.getDirector(),
+                        Integer.toString(movie.getYear()), Integer.toString(movie.getRating())));
+            }
         }
     }
 
     public Movie findMovie(String movieName)
     {
-        return new Movie("", "", 2018, 8);
+        for (Movie movie : allMovies)
+        {
+            if (movie.getName().equals(movieName))
+            {
+                return movie;
+            }
+        }
+        return null;
     }
 }

@@ -43,14 +43,15 @@ public class UserInputs {
 
     public String movieNameUserInput()
     {
-        return "";
+        String movieName = s.nextLine();
+        return movieName;
     }
 
     private boolean isMenuInputValid(String selectedMenuItem)
     {
         boolean result = ((selectedMenuItem.equals("List Books")||(selectedMenuItem.equals("Quit"))
                 ||(selectedMenuItem.equals("Checkout Book"))||selectedMenuItem.equals("Return Book")
-                ||selectedMenuItem.equals("List Movies"))? true : false);
+                ||selectedMenuItem.equals("List Movies")||selectedMenuItem.equals("Checkout Movie"))? true : false);
         return result;
     }
 

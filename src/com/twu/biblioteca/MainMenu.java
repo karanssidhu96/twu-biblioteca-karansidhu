@@ -34,6 +34,7 @@ public class MainMenu {
         System.out.println("List Books");
         System.out.println("List Movies");
         System.out.println("Checkout Book");
+        System.out.println("Checkout Movie");
         System.out.println("Return Book");
         System.out.println("Quit");
         System.out.print("Your selection: ");
@@ -45,6 +46,13 @@ public class MainMenu {
         String bookToCheckoutTitle = ui.bookTitleUserInput("That book is not available. " +
                 "Please choose another book or check spelling: ");
         books.findBook(bookToCheckoutTitle).checkout();
+    }
+
+    private void checkoutMovie()
+    {
+        System.out.print("Which movie would you like to checkout?: ");
+        String movieToCheckoutTitle = ui.movieNameUserInput();
+        movies.findMovie(movieToCheckoutTitle).checkout();
     }
 
     private void returnBook()
@@ -67,6 +75,9 @@ public class MainMenu {
                 break;
             case "Checkout Book":
                 checkoutBook();
+                break;
+            case "Checkout Movie":
+                checkoutMovie();
                 break;
             case "Return Book":
                 returnBook();

@@ -38,6 +38,6 @@ public class Movie {
 
     public void checkout()
     {
-
+        this.isMovieCheckedOut = true;
     }
 }
