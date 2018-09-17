@@ -41,12 +41,14 @@ public class BookTest {
     }
 
     @Test
-    public void returnBookTest()
+    public void successfulReturnBookTest()
     {
         Book book = new Book("Book", "Mr Book", 2018);
         book.checkout();
         book.returnBook();
+        String expectedOutput = "Thank you! Enjoy the book\nThank you for returning the book\n";
 
         assertEquals(false, book.getIsBookCheckedOut());
+        assertEquals(expectedOutput, outContent.toString());
     }
 }
