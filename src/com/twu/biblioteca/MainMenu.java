@@ -3,7 +3,7 @@ package com.twu.biblioteca;
 public class MainMenu {
     private Books books;
     private UserInputs ui;
-    public MainMenu(Books books, UserInputs ui)
+    public MainMenu(Books books, Movies movies, UserInputs ui)
     {
         this.books = books;
         this.ui = ui;
