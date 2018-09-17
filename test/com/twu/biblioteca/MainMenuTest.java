@@ -40,7 +40,7 @@ public class MainMenuTest {
         Books books = new Books();
         UserInputs ui = mock(UserInputs.class);
         String expectedResult = "Choose one of the following options\nList Books\nCheckout Book\nQuit\nYour selection: " +
-                "\nWhich book would you like to checkout?: \nThank you! Enjoy the book" +
+                "Which book would you like to checkout?: Thank you! Enjoy the book" +
                 "\nChoose one of the following options\nList Books\nCheckout Book\nQuit\nYour selection: ";
         when(ui.menuUserInput())
                 .thenReturn("Checkout Book")

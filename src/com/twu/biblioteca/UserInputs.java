@@ -12,6 +12,7 @@ public class UserInputs {
     }
 
     private Scanner s = new Scanner(System.in);
+
     public String menuUserInput()
     {
         boolean inputValid;
@@ -19,7 +20,7 @@ public class UserInputs {
         inputValid = isMenuInputValid(selectedMenuItem);
         while (!inputValid)
         {
-            System.out.print("\r\nSelect a valid option!: ");
+            System.out.print("Select a valid option!: ");
             selectedMenuItem = s.nextLine();
             inputValid = isMenuInputValid(selectedMenuItem);
         }

@@ -37,7 +37,7 @@ public class MainMenu {
 
     private void checkoutBook()
     {
-        System.out.println("\nWhich book would you like to checkout?: ");
+        System.out.print("Which book would you like to checkout?: ");
         String bookToCheckoutTitle = ui.bookTitleUserInput();
         books.findBook(bookToCheckoutTitle).checkout();
     }

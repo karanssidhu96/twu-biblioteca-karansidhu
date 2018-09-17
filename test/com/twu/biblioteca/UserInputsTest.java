@@ -89,7 +89,7 @@ public class UserInputsTest {
         String input = "Invalid input\nQuit";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        String expectedResult = "\r\nSelect a valid option!: ";
+        String expectedResult = "Select a valid option!: ";
 
         UserInputs ui = new UserInputs(books);
         assertEquals(ui.menuUserInput(), "Quit");
