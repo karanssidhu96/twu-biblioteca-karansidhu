@@ -21,10 +21,10 @@ public class BookTest {
     public void successfulCheckoutBookTest()
     {
         Book book = new Book("Book", "Mr Book", 2018);
-        book.checkout();
+        book.checkout("book");
         String expectedOutput = "Thank you! Enjoy the book\n";
 
-        assertEquals(true, book.getIsBookCheckedOut());
+        assertEquals(true, book.getIsItemCheckedOut());
         assertEquals(expectedOutput, outContent.toString());
     }
 
@@ -32,11 +32,11 @@ public class BookTest {
     public void unsuccessfulCheckoutBookAlreadyCheckedOutTest()
     {
         Book book = new Book("Book", "Mr Book", 2018);
-        book.checkout();
-        book.checkout();
+        book.checkout("book");
+        book.checkout("book");
         String expectedOutput = "Thank you! Enjoy the book\nThat book is not available\n";
 
-        assertEquals(true, book.getIsBookCheckedOut());
+        assertEquals(true, book.getIsItemCheckedOut());
         assertEquals(expectedOutput, outContent.toString());
     }
 
@@ -44,11 +44,11 @@ public class BookTest {
     public void successfulReturnBookTest()
     {
         Book book = new Book("Book", "Mr Book", 2018);
-        book.checkout();
+        book.checkout("book");
         book.returnBook();
         String expectedOutput = "Thank you! Enjoy the book\nThank you for returning the book\n";
 
-        assertEquals(false, book.getIsBookCheckedOut());
+        assertEquals(false, book.getIsItemCheckedOut());
         assertEquals(expectedOutput, outContent.toString());
     }
 
@@ -59,7 +59,7 @@ public class BookTest {
         book.returnBook();
         String expectedOutput = "That is not a valid book to return\n";
 
-        assertEquals(false, book.getIsBookCheckedOut());
+        assertEquals(false, book.getIsItemCheckedOut());
         assertEquals(expectedOutput, outContent.toString());
     }
 }

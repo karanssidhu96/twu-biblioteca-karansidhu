@@ -45,14 +45,14 @@ public class MainMenu {
         System.out.print("Which book would you like to checkout?: ");
         String bookToCheckoutTitle = ui.bookTitleUserInput("That book is not available. " +
                 "Please choose another book or check spelling: ");
-        books.findBook(bookToCheckoutTitle).checkout();
+        books.findBook(bookToCheckoutTitle).checkout("book");
     }
 
     private void checkoutMovie()
     {
         System.out.print("Which movie would you like to checkout?: ");
         String movieToCheckoutTitle = ui.movieNameUserInput();
-        movies.findMovie(movieToCheckoutTitle).checkout();
+        movies.findMovie(movieToCheckoutTitle).checkout("movie");
     }
 
     private void returnBook()

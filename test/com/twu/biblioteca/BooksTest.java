@@ -22,14 +22,14 @@ public class BooksTest {
     public void checkoutTest()
     {
         Books books = new Books();
-        books.findBook("Great Expectations").checkout();
-        assertEquals(true, books.findBook("Great Expectations").getIsBookCheckedOut());
+        books.findBook("Great Expectations").checkout("book");
+        assertEquals(true, books.findBook("Great Expectations").getIsItemCheckedOut());
     }
 
     @Test
     public void listBooksInStockTest() {
         Books books = new Books();
-        books.findBook("Great Expectations").checkout();
+        books.findBook("Great Expectations").checkout("book");
         books.printListAllBooksInStock();
         String expectedResult = String.format("Thank you! Enjoy the book\n|%-30s|%-30s|%-30s|\n|%-30s|%-30s|%-30s|" +
                         "\n|%-30s|%-30s|%-30s|\n", "Title", "Author", "Publication Year", "Frankenstein",

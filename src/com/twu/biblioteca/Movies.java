@@ -18,7 +18,7 @@ public class Movies {
         System.out.println(String.format("|%-50s|%-30s|%-30s|%-30s|", "Name", "Director", "Year", "Rating"));
         for (Movie movie : allMovies)
         {
-            if (!movie.getIsMovieCheckedOut())
+            if (!movie.getIsItemCheckedOut())
             {
                 System.out.println(String.format("|%-50s|%-30s|%-30s|%-30s|", movie.getName(), movie.getDirector(),
                         Integer.toString(movie.getYear()), Integer.toString(movie.getRating())));

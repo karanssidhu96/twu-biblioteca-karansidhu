@@ -75,7 +75,7 @@ public class MainMenuTest {
 
         MainMenu menu = new MainMenu(books, movies, ui);
         assertEquals(expectedResult, outContent.toString());
-        assertEquals(true, books.findBook("Pride and Prejudice").getIsBookCheckedOut());
+        assertEquals(true, books.findBook("Pride and Prejudice").getIsItemCheckedOut());
     }
 
     @Test
@@ -86,8 +86,8 @@ public class MainMenuTest {
         UserInputs ui = mock(UserInputs.class);
         String expectedResult = "Choose one of the following options\nList Books\nList Movies\nCheckout Book" +
                 "\nCheckout Movie\nReturn Book\nQuit\nYour selection: " +
-                "Which movie would you like to checkout?: " +
-                "Choose one of the following options\nList Books\nList Movies\nCheckout Book\nCheckout Movie" +
+                "Which movie would you like to checkout?: Thank you! Enjoy the movie" +
+                "\nChoose one of the following options\nList Books\nList Movies\nCheckout Book\nCheckout Movie" +
                 "\nReturn Book\nQuit\nYour selection: ";
         when(ui.menuUserInput())
                 .thenReturn("Checkout Movie")
@@ -97,7 +97,7 @@ public class MainMenuTest {
 
         MainMenu menu = new MainMenu(books, movies, ui);
         assertEquals(expectedResult, outContent.toString());
-        assertEquals(true, movies.findMovie("The Shawshank Redemption").getIsMovieCheckedOut());
+        assertEquals(true, movies.findMovie("The Shawshank Redemption").getIsItemCheckedOut());
     }
 
     @Test
@@ -105,7 +105,7 @@ public class MainMenuTest {
     {
         Books books = new Books();
         Movies movies = mock(Movies.class);
-        books.findBook("Pride and Prejudice").checkout();
+        books.findBook("Pride and Prejudice").checkout("book");
         UserInputs ui = mock(UserInputs.class);
         String expectedResult = "Thank you! Enjoy the book\nChoose one of the following options\nList Books" +
                 "\nList Movies\nCheckout Book\nCheckout Movie\nReturn Book\nQuit\nYour selection: " +
@@ -122,7 +122,7 @@ public class MainMenuTest {
 
         MainMenu menu = new MainMenu(books, movies, ui);
         assertEquals(expectedResult, outContent.toString());
-        assertEquals(false, books.findBook("Pride and Prejudice").getIsBookCheckedOut());
+        assertEquals(false, books.findBook("Pride and Prejudice").getIsItemCheckedOut());
     }
 
     @Test

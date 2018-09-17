@@ -1,11 +1,10 @@
 package com.twu.biblioteca;
 
-public class Movie {
+public class Movie extends Item {
     private String name;
     private int year;
     private String director;
     private int rating;
-    private boolean isMovieCheckedOut;
 
     public Movie(String name, String director, int year, int rating)
     {
@@ -13,7 +12,7 @@ public class Movie {
         this.year = year;
         this.director = director;
         this.rating = rating;
-        this.isMovieCheckedOut = false;
+        this.setIsItemCheckedOut(false);
     }
 
     public String getName() {
@@ -32,12 +31,4 @@ public class Movie {
         return rating;
     }
 
-    public boolean getIsMovieCheckedOut() {
-        return isMovieCheckedOut;
-    }
-
-    public void checkout()
-    {
-        this.isMovieCheckedOut = true;
-    }
 }

@@ -9,8 +9,8 @@ public class MovieTest {
     public void checkoutMovie()
     {
         Movie movie = new Movie("A Movie", "A Person", 2018, 5);
-        movie.checkout();
+        movie.checkout("movie");
 
-        assertEquals(true, movie.getIsMovieCheckedOut());
+        assertEquals(true, movie.getIsItemCheckedOut());
     }
 }

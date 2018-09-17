@@ -34,7 +34,7 @@ public class Books {
         System.out.println(String.format("|%-30s|%-30s|%-30s|", "Title", "Author", "Publication Year"));
         for (Book book : allBooks)
         {
-            if (!book.getIsBookCheckedOut())
+            if (!book.getIsItemCheckedOut())
             {
                 System.out.println(String.format("|%-30s|%-30s|%-30s|", book.getTitle(), book.getAuthor(),
                         Integer.toString(book.getPublicationYear())));

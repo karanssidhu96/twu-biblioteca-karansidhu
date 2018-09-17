@@ -1,17 +1,16 @@
 package com.twu.biblioteca;
 
-public class Book {
+public class Book extends Item {
     private String title;
     private String author;
     private int publicationYear;
-    private boolean isBookCheckedOut;
 
     public Book(String title, String author, int publicationYear)
     {
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
-        this.isBookCheckedOut = false;
+        this.setIsItemCheckedOut(false);
     }
 
     public String getAuthor() {
@@ -26,26 +25,11 @@ public class Book {
         return title;
     }
 
-    public Boolean getIsBookCheckedOut() { return isBookCheckedOut; }
-
-    public void checkout()
-    {
-        if (!this.isBookCheckedOut)
-        {
-            this.isBookCheckedOut = true;
-            System.out.println("Thank you! Enjoy the book");
-        }
-        else
-        {
-            System.out.println("That book is not available");
-        }
-    }
-
     public void returnBook()
     {
-        if (this.isBookCheckedOut)
+        if (this.getIsItemCheckedOut())
         {
-            this.isBookCheckedOut = false;
+            this.setIsItemCheckedOut(false);
             System.out.println("Thank you for returning the book");
         }
         else
