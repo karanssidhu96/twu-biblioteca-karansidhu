@@ -18,11 +18,23 @@ public class BookTest {
     }
 
     @Test
-    public void checkoutBookTest()
+    public void successfulCheckoutBookTest()
     {
         Book book = new Book("Book", "Mr Book", 2018);
         book.checkout();
         String expectedOutput = "Thank you! Enjoy the book\n";
+
+        assertEquals(true, book.getIsBookCheckedOut());
+        assertEquals(expectedOutput, outContent.toString());
+    }
+
+    @Test
+    public void unsuccessfulCheckoutBookAlreadyCheckedOutTest()
+    {
+        Book book = new Book("Book", "Mr Book", 2018);
+        book.checkout();
+        book.checkout();
+        String expectedOutput = "Thank you! Enjoy the book\nThat book is not available.";
 
         assertEquals(true, book.getIsBookCheckedOut());
         assertEquals(expectedOutput, outContent.toString());
