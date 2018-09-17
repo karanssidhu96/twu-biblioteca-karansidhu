@@ -43,6 +43,6 @@ public class Book {
 
     public void returnBook()
     {
-
+        this.isBookCheckedOut = false;
     }
 }

@@ -31,6 +31,7 @@ public class MainMenu {
         System.out.println("Choose one of the following options");
         System.out.println("List Books");
         System.out.println("Checkout Book");
+        System.out.println("Return Book");
         System.out.println("Quit");
         System.out.print("Your selection: ");
     }
@@ -42,6 +43,13 @@ public class MainMenu {
         books.findBook(bookToCheckoutTitle).checkout();
     }
 
+    private void returnBook()
+    {
+        System.out.print("Which book would you like to return?: ");
+        String bookToReturnTitle = ui.bookTitleUserInput();
+        books.findBook(bookToReturnTitle).returnBook();
+    }
+
     private void innerMenu(String selectedMenuItem)
     {
         switch (selectedMenuItem)
@@ -51,6 +59,9 @@ public class MainMenu {
                 break;
             case "Checkout Book":
                 checkoutBook();
+                break;
+            case "Return Book":
+                returnBook();
                 break;
             case "Quit":
                 break;
