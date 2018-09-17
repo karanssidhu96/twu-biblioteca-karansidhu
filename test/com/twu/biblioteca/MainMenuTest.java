@@ -45,7 +45,7 @@ public class MainMenuTest {
         when(ui.menuUserInput())
                 .thenReturn("Checkout Book")
                 .thenReturn("Quit");
-        when(ui.bookTitleUserInput())
+        when(ui.bookTitleUserInput("That book is not available. Please choose another book or check spelling: "))
                 .thenReturn("Pride and Prejudice");
 
         MainMenu menu = new MainMenu(books, ui);
@@ -66,7 +66,7 @@ public class MainMenuTest {
         when(ui.menuUserInput())
                 .thenReturn("Return Book")
                 .thenReturn("Quit");
-        when(ui.bookTitleUserInput())
+        when(ui.bookTitleUserInput("That is not a valid book to return"))
                 .thenReturn("Pride and Prejudice");
 
         MainMenu menu = new MainMenu(books, ui);

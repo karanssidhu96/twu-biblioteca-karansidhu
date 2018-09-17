@@ -27,14 +27,14 @@ public class UserInputs {
         return selectedMenuItem;
     }
 
-    public String bookTitleUserInput()
+    public String bookTitleUserInput(String invalidTitleMessage)
     {
         boolean inputValid;
         String bookTitle = s.nextLine();
         inputValid = isBookTitleValid(bookTitle);
         while (!inputValid)
         {
-            System.out.print("That book is not available. Please choose another book or check spelling: ");
+            System.out.print(invalidTitleMessage);
             bookTitle = s.nextLine();
             inputValid = isBookTitleValid(bookTitle);
         }

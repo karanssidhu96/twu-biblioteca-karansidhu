@@ -51,4 +51,15 @@ public class BookTest {
         assertEquals(false, book.getIsBookCheckedOut());
         assertEquals(expectedOutput, outContent.toString());
     }
+
+    @Test
+    public void unsuccessfulReturnBookNotCheckedOutTest()
+    {
+        Book book = new Book("Book", "Mr Book", 2018);
+        book.returnBook();
+        String expectedOutput = "That is not a valid book to return\n";
+
+        assertEquals(false, book.getIsBookCheckedOut());
+        assertEquals(expectedOutput, outContent.toString());
+    }
 }

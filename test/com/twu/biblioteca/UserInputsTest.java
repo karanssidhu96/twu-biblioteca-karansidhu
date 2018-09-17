@@ -65,7 +65,7 @@ public class UserInputsTest {
         System.setIn(in);
 
         UserInputs ui = new UserInputs(books);
-        assertEquals(ui.bookTitleUserInput(), "Great Expectations");
+        assertEquals(ui.bookTitleUserInput("That book is not available. Please choose another book or check spelling: "), "Great Expectations");
     }
 
     @Test
@@ -78,7 +78,7 @@ public class UserInputsTest {
         String expectedResult = "That book is not available. Please choose another book or check spelling: ";
 
         UserInputs ui = new UserInputs(books);
-        assertEquals(ui.bookTitleUserInput(), "Great Expectations");
+        assertEquals(ui.bookTitleUserInput("That book is not available. Please choose another book or check spelling: "), "Great Expectations");
         assertEquals(expectedResult, outContent.toString());
     }
 
