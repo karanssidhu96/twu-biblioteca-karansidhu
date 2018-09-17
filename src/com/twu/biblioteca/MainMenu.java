@@ -39,14 +39,16 @@ public class MainMenu {
     private void checkoutBook()
     {
         System.out.print("Which book would you like to checkout?: ");
-        String bookToCheckoutTitle = ui.bookTitleUserInput("That book is not available. Please choose another book or check spelling: ");
+        String bookToCheckoutTitle = ui.bookTitleUserInput("That book is not available. " +
+                "Please choose another book or check spelling: ");
         books.findBook(bookToCheckoutTitle).checkout();
     }
 
     private void returnBook()
     {
         System.out.print("Which book would you like to return?: ");
-        String bookToReturnTitle = ui.bookTitleUserInput("That is not a valid book to return");
+        String bookToReturnTitle = ui.bookTitleUserInput("That is not a valid book to return. " +
+                "Please choose another book or check spelling: ");
         books.findBook(bookToReturnTitle).returnBook();
     }
 

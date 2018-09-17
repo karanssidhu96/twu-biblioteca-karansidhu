@@ -66,7 +66,8 @@ public class MainMenuTest {
         when(ui.menuUserInput())
                 .thenReturn("Return Book")
                 .thenReturn("Quit");
-        when(ui.bookTitleUserInput("That is not a valid book to return"))
+        when(ui.bookTitleUserInput("That is not a valid book to return. " +
+                "Please choose another book or check spelling: "))
                 .thenReturn("Pride and Prejudice");
 
         MainMenu menu = new MainMenu(books, ui);

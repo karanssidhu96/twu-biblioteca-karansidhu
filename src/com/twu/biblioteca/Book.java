@@ -43,7 +43,15 @@ public class Book {
 
     public void returnBook()
     {
-        this.isBookCheckedOut = false;
-        System.out.println("Thank you for returning the book");
+        if (this.isBookCheckedOut)
+        {
+            this.isBookCheckedOut = false;
+            System.out.println("Thank you for returning the book");
+        }
+        else
+        {
+            System.out.println("That is not a valid book to return");
+        }
+
     }
 }
