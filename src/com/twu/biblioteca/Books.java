@@ -13,6 +13,10 @@ public class Books {
         allBooks.add(new Book("Great Expectations", "Charles Dickens", 1861));
     }
 
+    public ArrayList<Book> getAllBooks() {
+        return allBooks;
+    }
+
     public Book findBook(String bookTitle)
     {
         for (Book book : allBooks)

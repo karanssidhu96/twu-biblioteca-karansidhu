@@ -34,7 +34,7 @@ public class BookTest {
         Book book = new Book("Book", "Mr Book", 2018);
         book.checkout();
         book.checkout();
-        String expectedOutput = "Thank you! Enjoy the book\nThat book is not available.";
+        String expectedOutput = "Thank you! Enjoy the book\nThat book is not available\n";
 
         assertEquals(true, book.getIsBookCheckedOut());
         assertEquals(expectedOutput, outContent.toString());

@@ -45,7 +45,7 @@ public class MainMenuTest {
         when(ui.menuUserInput())
                 .thenReturn("Checkout Book")
                 .thenReturn("Quit");
-        when(ui.bookNameUserInput())
+        when(ui.bookTitleUserInput())
                 .thenReturn("Pride and Prejudice");
 
         MainMenu menu = new MainMenu(books, ui);

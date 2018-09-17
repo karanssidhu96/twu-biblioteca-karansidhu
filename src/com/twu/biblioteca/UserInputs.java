@@ -4,6 +4,13 @@ import java.util.Scanner;
 
 public class UserInputs {
 
+    private Books books;
+
+    UserInputs(Books books)
+    {
+        this.books = books;
+    }
+
     private Scanner s = new Scanner(System.in);
     public String menuUserInput()
     {
@@ -19,10 +26,18 @@ public class UserInputs {
         return selectedMenuItem;
     }
 
-    public String bookNameUserInput()
+    public String bookTitleUserInput()
     {
-        String bookName = s.nextLine();
-        return bookName;
+        boolean inputValid;
+        String bookTitle = s.nextLine();
+        inputValid = isBookTitleValid(bookTitle);
+        while (!inputValid)
+        {
+            System.out.print("That book is not available. Please choose another book or check spelling: ");
+            bookTitle = s.nextLine();
+            inputValid = isBookTitleValid(bookTitle);
+        }
+        return bookTitle;
     }
 
     private boolean isMenuInputValid(String selectedMenuItem)
@@ -30,5 +45,17 @@ public class UserInputs {
         boolean result = ((selectedMenuItem.equals("List Books")||(selectedMenuItem.equals("Quit"))
                 ||(selectedMenuItem.equals("Checkout Book")))? true : false);
         return result;
+    }
+
+    private boolean isBookTitleValid(String bookTitle)
+    {
+        for (Book book : books.getAllBooks())
+        {
+            if (book.getTitle().equals(bookTitle))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

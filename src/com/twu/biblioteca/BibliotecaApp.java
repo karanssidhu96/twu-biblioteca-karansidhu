@@ -5,7 +5,7 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         System.out.println("Welcome to Biblioteca");
         Books books = new Books();
-        UserInputs ui = new UserInputs();
+        UserInputs ui = new UserInputs(books);
         MainMenu menu = new MainMenu(books, ui);
     }
 }

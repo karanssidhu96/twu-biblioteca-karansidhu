@@ -30,7 +30,14 @@ public class Book {
 
     public void checkout()
     {
-        this.isBookCheckedOut = true;
-        System.out.println("Thank you! Enjoy the book");
+        if (!this.isBookCheckedOut)
+        {
+            this.isBookCheckedOut = true;
+            System.out.println("Thank you! Enjoy the book");
+        }
+        else
+        {
+            System.out.println("That book is not available");
+        }
     }
 }
