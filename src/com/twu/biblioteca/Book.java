@@ -40,4 +40,9 @@ public class Book {
             System.out.println("That book is not available");
         }
     }
+
+    public void returnBook()
+    {
+
+    }
 }
