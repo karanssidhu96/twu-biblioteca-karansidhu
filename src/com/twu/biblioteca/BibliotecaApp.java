@@ -6,7 +6,8 @@ public class BibliotecaApp {
         System.out.println("Welcome to Biblioteca");
         Books books = new Books();
         Movies movies = new Movies();
+        Users users = new Users();
         UserInputs ui = new UserInputs(books);
-        MainMenu menu = new MainMenu(books, movies, ui);
+        MainMenu menu = new MainMenu(books, movies, ui, users);
     }
 }

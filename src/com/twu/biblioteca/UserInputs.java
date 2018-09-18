@@ -41,7 +41,7 @@ public class UserInputs {
         return bookTitle;
     }
 
-    public String movieNameUserInput()
+    public String basicUserInput()
     {
         String movieName = s.nextLine();
         return movieName;

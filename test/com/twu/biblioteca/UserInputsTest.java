@@ -69,7 +69,7 @@ public class UserInputsTest {
     }
 
     @Test
-    public void userMovieNameInputTest()
+    public void userBasicInputTest()
     {
         Books books = new Books();
         String input = "The Shawshank Redemption";
@@ -77,7 +77,7 @@ public class UserInputsTest {
         System.setIn(in);
 
         UserInputs ui = new UserInputs(books);
-        assertEquals(ui.movieNameUserInput(), "The Shawshank Redemption");
+        assertEquals(ui.basicUserInput(), "The Shawshank Redemption");
     }
 
     @Test

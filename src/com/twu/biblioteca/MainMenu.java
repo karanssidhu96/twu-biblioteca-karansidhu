@@ -4,11 +4,13 @@ public class MainMenu {
     private Books books;
     private UserInputs ui;
     private Movies movies;
-    public MainMenu(Books books, Movies movies, UserInputs ui)
+    private Users users;
+    public MainMenu(Books books, Movies movies, UserInputs ui, Users users)
     {
         this.books = books;
         this.ui = ui;
         this.movies = movies;
+        this.users = users;
         runMenu();
     }
 
@@ -42,25 +44,53 @@ public class MainMenu {
 
     private void checkoutBook()
     {
-        System.out.print("Which book would you like to checkout?: ");
-        String bookToCheckoutTitle = ui.bookTitleUserInput("That book is not available. " +
-                "Please choose another book or check spelling: ");
-        books.findBook(bookToCheckoutTitle).checkout("book");
+        User user = logIn();
+        if (user != null)
+        {
+            System.out.print("Which book would you like to checkout?: ");
+            String bookToCheckoutTitle = ui.bookTitleUserInput("That book is not available. " +
+                    "Please choose another book or check spelling: ");
+            Book book = books.findBook(bookToCheckoutTitle);
+            book.checkout("book");
+            users.getAllUsers().get(users.getAllUsers().indexOf(user)).getCheckedOutBooks().add(book);
+        }
+        else {System.out.println("Authentication failed, unable to log in");}
     }
 
     private void checkoutMovie()
     {
         System.out.print("Which movie would you like to checkout?: ");
-        String movieToCheckoutTitle = ui.movieNameUserInput();
+        String movieToCheckoutTitle = ui.basicUserInput();
         movies.findMovie(movieToCheckoutTitle).checkout("movie");
     }
 
     private void returnBook()
     {
-        System.out.print("Which book would you like to return?: ");
-        String bookToReturnTitle = ui.bookTitleUserInput("That is not a valid book to return. " +
-                "Please choose another book or check spelling: ");
-        books.findBook(bookToReturnTitle).returnBook();
+        User user = logIn();
+        if (user != null)
+        {
+            System.out.print("Which book would you like to return?: ");
+            String bookToReturnTitle = ui.bookTitleUserInput("That is not a valid book to return. " +
+                    "Please choose another book or check spelling: ");
+            Book book = books.findBook(bookToReturnTitle);
+            book.returnBook();
+            users.getAllUsers().get(users.getAllUsers().indexOf(user)).getCheckedOutBooks().remove(book);
+        }
+        else {System.out.println("Authentication failed, unable to log in");}
+    }
+
+    private User logIn()
+    {
+        System.out.print("You must log in to access this service\nLibrary Number: ");
+        String libraryNo = ui.basicUserInput();
+        System.out.print("Password: ");
+        String password = ui.basicUserInput();
+        User user = new User(libraryNo, password);
+        if (users.logIn(user))
+        {
+            return user;
+        }
+        else return null;
     }
 
     private void innerMenu(String selectedMenuItem)
