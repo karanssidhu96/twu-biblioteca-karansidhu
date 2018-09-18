@@ -8,7 +8,7 @@ public class UsersTest {
     public void usersLogInTest()
     {
         Users users = new Users();
-        User user1 = new User("007-1111", "pass");
+        User user1 = new User("007-1111", "pass","","","");
 
         assertEquals(true, users.logIn(user1));
     }

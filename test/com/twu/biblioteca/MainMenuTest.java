@@ -25,9 +25,9 @@ public class MainMenuTest {
         Movies movies = mock(Movies.class);
         UserInputs ui = mock(UserInputs.class);
         String expectedResult = "Choose one of the following options\nList Books\nList Movies\nCheckout Book" +
-                "\nCheckout Movie\nReturn Book\nQuit\nYour selection: " +
+                "\nCheckout Movie\nReturn Book\nGet Details\nQuit\nYour selection: " +
                 "Choose one of the following options\nList Books\nList Movies\nCheckout Book" +
-                "\nCheckout Movie\nReturn Book\nQuit\nYour selection: ";
+                "\nCheckout Movie\nReturn Book\nGet Details\nQuit\nYour selection: ";
         when(ui.menuUserInput())
                 .thenReturn("List Books")
                 .thenReturn("Quit");
@@ -45,9 +45,9 @@ public class MainMenuTest {
         Movies movies = mock(Movies.class);
         UserInputs ui = mock(UserInputs.class);
         String expectedResult = "Choose one of the following options\nList Books\nList Movies\nCheckout Book" +
-                "\nCheckout Movie\nReturn Book\nQuit\nYour selection: " +
+                "\nCheckout Movie\nReturn Book\nGet Details\nQuit\nYour selection: " +
                 "Choose one of the following options\nList Books\nList Movies\nCheckout Book\nCheckout Movie" +
-                "\nReturn Book\nQuit\nYour selection: ";
+                "\nReturn Book\nGet Details\nQuit\nYour selection: ";
         when(ui.menuUserInput())
                 .thenReturn("List Movies")
                 .thenReturn("Quit");
@@ -66,11 +66,11 @@ public class MainMenuTest {
         Movies movies = mock(Movies.class);
         UserInputs ui = mock(UserInputs.class);
         String expectedResult = "Choose one of the following options\nList Books\nList Movies\nCheckout Book" +
-                "\nCheckout Movie\nReturn Book\nQuit\nYour selection: " +
+                "\nCheckout Movie\nReturn Book\nGet Details\nQuit\nYour selection: " +
                 "You must log in to access this service\nLibrary Number: Password: " +
                 "Which book would you like to checkout?: Thank you! Enjoy the book" +
                 "\nChoose one of the following options\nList Books\nList Movies\nCheckout Book\nCheckout Movie" +
-                "\nReturn Book\nQuit\nYour selection: ";
+                "\nReturn Book\nGet Details\nQuit\nYour selection: ";
         when(ui.menuUserInput())
                 .thenReturn("Checkout Book")
                 .thenReturn("Quit");
@@ -84,7 +84,8 @@ public class MainMenuTest {
         assertEquals(expectedResult, outContent.toString());
         assertEquals(true, books.findBook("Pride and Prejudice").getIsItemCheckedOut());
 
-        User user = new User("007-1111", "pass");
+        User user = new User("007-1111", "pass","Bob", "bob@bobmail.com",
+                "01234567890");
         assertEquals(true, users.getAllUsers().get(users.getAllUsers().indexOf(user)).getCheckedOutBooks()
                 .contains(books.findBook("Pride and Prejudice")));
     }
@@ -97,11 +98,11 @@ public class MainMenuTest {
         Movies movies = mock(Movies.class);
         UserInputs ui = mock(UserInputs.class);
         String expectedResult = "Choose one of the following options\nList Books\nList Movies\nCheckout Book" +
-                "\nCheckout Movie\nReturn Book\nQuit\nYour selection: " +
+                "\nCheckout Movie\nReturn Book\nGet Details\nQuit\nYour selection: " +
                 "You must log in to access this service\nLibrary Number: Password: " +
                 "Authentication failed, unable to log in" +
                 "\nChoose one of the following options\nList Books\nList Movies\nCheckout Book\nCheckout Movie" +
-                "\nReturn Book\nQuit\nYour selection: ";
+                "\nReturn Book\nGet Details\nQuit\nYour selection: ";
         when(ui.menuUserInput())
                 .thenReturn("Checkout Book")
                 .thenReturn("Quit");
@@ -121,10 +122,10 @@ public class MainMenuTest {
         Movies movies = new Movies();
         UserInputs ui = mock(UserInputs.class);
         String expectedResult = "Choose one of the following options\nList Books\nList Movies\nCheckout Book" +
-                "\nCheckout Movie\nReturn Book\nQuit\nYour selection: " +
+                "\nCheckout Movie\nReturn Book\nGet Details\nQuit\nYour selection: " +
                 "Which movie would you like to checkout?: Thank you! Enjoy the movie" +
                 "\nChoose one of the following options\nList Books\nList Movies\nCheckout Book\nCheckout Movie" +
-                "\nReturn Book\nQuit\nYour selection: ";
+                "\nReturn Book\nGet Details\nQuit\nYour selection: ";
         when(ui.menuUserInput())
                 .thenReturn("Checkout Movie")
                 .thenReturn("Quit");
@@ -145,11 +146,11 @@ public class MainMenuTest {
         books.findBook("Pride and Prejudice").checkout("book");
         UserInputs ui = mock(UserInputs.class);
         String expectedResult = "Thank you! Enjoy the book\nChoose one of the following options\nList Books" +
-                "\nList Movies\nCheckout Book\nCheckout Movie\nReturn Book\nQuit\nYour selection: " +
+                "\nList Movies\nCheckout Book\nCheckout Movie\nReturn Book\nGet Details\nQuit\nYour selection: " +
                 "You must log in to access this service\nLibrary Number: Password: " +
                 "Which book would you like to return?: Thank you for returning the book" +
                 "\nChoose one of the following options\nList Books\nList Movies\nCheckout Book\nCheckout Movie" +
-                "\nReturn Book\nQuit" +
+                "\nReturn Book\nGet Details\nQuit" +
                 "\nYour selection: ";
         when(ui.menuUserInput())
                 .thenReturn("Return Book")
@@ -164,7 +165,8 @@ public class MainMenuTest {
         MainMenu menu = new MainMenu(books, movies, ui, users);
         assertEquals(expectedResult, outContent.toString());
         assertEquals(false, books.findBook("Pride and Prejudice").getIsItemCheckedOut());
-        User user = new User("007-1111", "pass");
+        User user = new User("007-1111", "pass", "Bob", "bob@bobmail.com",
+                "01234567890");
         assertEquals(false, users.getAllUsers().get(users.getAllUsers().indexOf(user)).getCheckedOutBooks()
                 .contains(books.findBook("Pride and Prejudice")));
     }
@@ -177,17 +179,43 @@ public class MainMenuTest {
         Movies movies = mock(Movies.class);
         UserInputs ui = mock(UserInputs.class);
         String expectedResult = "Choose one of the following options\nList Books\nList Movies\nCheckout Book" +
-                "\nCheckout Movie\nReturn Book\nQuit\nYour selection: " +
+                "\nCheckout Movie\nReturn Book\nGet Details\nQuit\nYour selection: " +
                 "You must log in to access this service\nLibrary Number: Password: " +
                 "Authentication failed, unable to log in" +
                 "\nChoose one of the following options\nList Books\nList Movies\nCheckout Book\nCheckout Movie" +
-                "\nReturn Book\nQuit\nYour selection: ";
+                "\nReturn Book\nGet Details\nQuit\nYour selection: ";
         when(ui.menuUserInput())
                 .thenReturn("Return Book")
                 .thenReturn("Quit");
         when(ui.basicUserInput())
                 .thenReturn("007-9999")
                 .thenReturn("not a password");
+
+        MainMenu menu = new MainMenu(books, movies, ui, users);
+        assertEquals(expectedResult, outContent.toString());
+    }
+
+    @Test
+    public void mainMenuGetDetailsTest()
+    {
+        Books books = new Books();
+        Users users = new Users();
+        Movies movies = mock(Movies.class);
+        books.findBook("Pride and Prejudice").checkout("book");
+        UserInputs ui = mock(UserInputs.class);
+        String expectedResult = "Thank you! Enjoy the book\nChoose one of the following options\nList Books" +
+                "\nList Movies\nCheckout Book\nCheckout Movie\nReturn Book\nGet Details\nQuit\nYour selection: " +
+                "You must log in to access this service\nLibrary Number: Password: " +
+                "Your details\nName: Bob\nE-Mail: bob@bobmail.com\nPhone Number: 01234567890" +
+                "\nChoose one of the following options\nList Books\nList Movies\nCheckout Book\nCheckout Movie" +
+                "\nReturn Book\nGet Details\nQuit" +
+                "\nYour selection: ";
+        when(ui.menuUserInput())
+                .thenReturn("Get Details")
+                .thenReturn("Quit");
+        when(ui.basicUserInput())
+                .thenReturn("007-1111")
+                .thenReturn("pass");
 
         MainMenu menu = new MainMenu(books, movies, ui, users);
         assertEquals(expectedResult, outContent.toString());
@@ -201,7 +229,7 @@ public class MainMenuTest {
         Movies movies = mock(Movies.class);
         UserInputs ui = mock(UserInputs.class);
         String expectedResult = "Choose one of the following options\nList Books\nList Movies\nCheckout Book" +
-                "\nCheckout Movie\nReturn Book" +
+                "\nCheckout Movie\nReturn Book\nGet Details" +
                 "\nQuit\nYour selection: ";
         when(ui.menuUserInput())
                 .thenReturn("Quit");

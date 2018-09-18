@@ -51,7 +51,8 @@ public class UserInputs {
     {
         boolean result = ((selectedMenuItem.equals("List Books")||(selectedMenuItem.equals("Quit"))
                 ||(selectedMenuItem.equals("Checkout Book"))||selectedMenuItem.equals("Return Book")
-                ||selectedMenuItem.equals("List Movies")||selectedMenuItem.equals("Checkout Movie"))? true : false);
+                ||selectedMenuItem.equals("List Movies")||selectedMenuItem.equals("Checkout Movie")
+                ||selectedMenuItem.equals("Get Details"))? true : false);
         return result;
     }
 

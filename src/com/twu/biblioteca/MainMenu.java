@@ -38,6 +38,7 @@ public class MainMenu {
         System.out.println("Checkout Book");
         System.out.println("Checkout Movie");
         System.out.println("Return Book");
+        System.out.println("Get Details");
         System.out.println("Quit");
         System.out.print("Your selection: ");
     }
@@ -79,13 +80,23 @@ public class MainMenu {
         else {System.out.println("Authentication failed, unable to log in");}
     }
 
+    private void getDetails()
+    {
+        User user = logIn();
+        if (user != null)
+        {
+            users.getAllUsers().get(users.getAllUsers().indexOf(user)).getDetails();
+        }
+        else {System.out.println("Authentication failed, unable to log in");}
+    }
+
     private User logIn()
     {
         System.out.print("You must log in to access this service\nLibrary Number: ");
         String libraryNo = ui.basicUserInput();
         System.out.print("Password: ");
         String password = ui.basicUserInput();
-        User user = new User(libraryNo, password);
+        User user = new User(libraryNo, password,"","","");
         if (users.logIn(user))
         {
             return user;
@@ -111,6 +122,9 @@ public class MainMenu {
                 break;
             case "Return Book":
                 returnBook();
+                break;
+            case "Get Details":
+                getDetails();
                 break;
             case "Quit":
                 break;
